@@ -1,0 +1,33 @@
+{% extends "master.html" %}
+{% load static %}
+
+
+{% block title %}
+Sobre
+{% endblock %}
+
+{% block content %}
+<section class="about_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Sobre o Projeto Boias Livres
+        </h2>
+      </div>
+      <div class="box">
+        <div class="img-box">
+          <img src="{% static 'images/logo.png' %}" alt="">
+        </div>
+        <div class="detail-box">
+          <p>
+            O Projeto Boias Livres é promovido pelo Laboratório ECO, o Laboratório de Engenharia e Ciências Oceânicas
+                        da Universidade Federal de Santa Catarina.
+          </p>
+          <a href="">
+            Saiba mais
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
