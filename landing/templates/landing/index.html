@@ -284,11 +284,14 @@
       &copy; 2024 Todos os direitos reservados.
     </p>
   </section>
-  <!-- footer section -->
-  {% compress js %}
+  <!-- footer section 
+  { compres js }
   <script type="text/javascript" src="{% static 'landing/js/jquery-3.4.1.min.js' %} "></script>
+  { endcompres }
+    { compres js }
     <script type="text/javascript" src="{% static 'landing/js/bootstrap.js' %}"></script>
-    {% endcompress %}
+    { endcompres }
+  -->
   <script>
     function openNav() {
       document.getElementById("myNav").classList.toggle("menu_width");
