@@ -3,3 +3,7 @@ settings.py
 db.sqlite3
 
 __pycache__/
+__pycache__
+**/__pycache__/**
+
+collected_static_files/
