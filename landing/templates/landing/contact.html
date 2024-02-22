@@ -18,35 +18,35 @@ Contato
       <div class="layout_padding2-top">
         <div class="row">
           <div class="col-md-6 ">
-            <form action="">
+            <form action="https://api.web3forms.com/submit" method="POST">
               <div class="contact_form-container">
                 <div>
                   <div>
-                    <input type="text" placeholder="Nome" />
-                  </div>
-                  <div>
-                    <input type="email" placeholder="E-mail" />
-                  </div>
-                  <div>
-                    <input type="text" placeholder="Telefone" />
-                  </div>
-                  <div class="mt-5">
-                    <input type="text" placeholder="Texto" />
-                  </div>
-                  <div class="mt-5">
+                    <input type="hidden" name="access_key" value="421a100c-c662-4751-92e3-42b072e3942e">
+                   <!-- <input type="hidden" name="redirect" value="/url do site/"> -->
+                    <input type="text" name="nome" placeholder="Nome" />
+                    <input type="email" name="email" placeholder="Email" />
+                    <input type="text" name="celular" placeholder="Celular" />
+                    <input type="text" name="subject" placeholder="Assunto" />
+                    <input type="hidden" name="from_name" value="Site Boias Livres">
+                    <div class="mt-5">
+                      <input type="text" name="mensagem" placeholder="Mensagem" />
+                    </div>
+                    <div class="mt-5">
                     <button type="submit">
                       Enviar
                     </button>
                   </div>
                 </div>
               </div>
+            </div>
             </form>
           </div>
           <div class="col-md-6">
             <div class="map_container">
               <div class="map-responsive">
                 <iframe
-                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d220.98369821734826!2d-48.51801210957093!3d-27.601615006942744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95273900f57ede01%3A0xa7841adbe71af281!2sDepartamento%20de%20Engenharia%20Mec%C3%A2nica%20-%20Bloco%20A!5e0!3m2!1spt-BR!2sbr!4v1706736010972!5m2!1spt-BR!2sbr"
                   width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%"
                   allowfullscreen></iframe>
               </div>
