@@ -5,5 +5,14 @@ db.sqlite3
 __pycache__/
 __pycache__
 **/__pycache__/**
-
+*.pyc
 static/
+media
+
+.env 
+.venv 
+env/ 
+venv/ 
+ENV/ 
+env.bak/ 
+venv.bak/ 
