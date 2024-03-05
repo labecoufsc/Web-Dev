@@ -13,4 +13,4 @@ services:
     env_file:
       - ./dotenv_files/.env
 
-#Incluir o InfluxDB
+#Incluir o InfluxDB nos serviços
