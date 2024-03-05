@@ -9,8 +9,7 @@ services:
       - 8000:8000
     volumes:
       - ./djangoapp:/djangoapp
-      - ./data/web/static:/data/web/static/
-      - ./data/web/media:/data/web/media/
+      - ./djangoapp/static:/djangoapp/static/
     env_file:
       - ./dotenv_files/.env
 
