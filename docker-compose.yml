@@ -1,0 +1,16 @@
+version: '2.24.6'
+
+services:
+  djangoapp:
+    container_name: djangoapp
+    build:
+      context: .
+    ports:
+      - 8000:8000
+    volumes:
+      - ./djangoapp:/djangoapp
+      - ./djangoapp/static:/djangoapp/static/
+    env_file:
+      - ./dotenv_files/.env
+
+#Incluir o InfluxDB
