@@ -16,7 +16,7 @@ class InfluxClient:
         result = query_api.query(org=self._org, query=query)
         results = []
         for table in result:
-            print(table)
+            #print(table)
             for record in table.records:
                 results.append((record.get_value(), record.get_field()))
         print(results)

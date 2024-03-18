@@ -6,10 +6,15 @@ from influxClient import InfluxClient
 
 IC = InfluxClient("Bo6LdE_XVqMZrC6hAu_OUZwhRYxwqFiea01RJx9sdPdtcxbfE0mzPi32spI2JFWkQwpQcUl5Y15Rg2NCX1WrwA==","Boias Livres","bucket-boias")
 query1 = 'from(bucket: "bucket-boias")\
-|> range(start: 1633124983)\
-|> filter(fn: (r) => r.boia_id == "2")'
-coordenadas = IC.query_data(query1)
-
+  |> range(start: 1633124983)\
+  |> filter(fn: (r) => r["_measurement"] == "boiasLivres")\
+  |> filter(fn: (r) => r["boia_id"] == "2")\
+  |> filter(fn: (r) => r["_field"] == "latitude" or r["_field"] == "longitude")\
+  |> group(columns: ["_time", "tag"])\
+  |> yield(name: "mean")'
+c = IC.query_data(query1)
+c = [i[0] for i in c]
+final = [*zip(c[::2], c[1::2])]
 
 #   CONFIG MAPA
 caminhoArquivoLaranja = 'python\laranja.txt'
@@ -59,7 +64,7 @@ def plotarBoia(listaCoordenadasBoia, corDaBoia, grupoBoia):
     trilhaDaBoia(listaCoordenadasBoia, corDaBoia, grupoBoia)
 
 #   PLOTANDO
-marcadorDeBoia(coordenadas, preto, circle, grupoPreto)
+plotarBoia(final, preto, grupoPreto)
 
 folium.FitOverlays(fly=True).add_to(mapa) #centrar nos marcadores 
 folium.LayerControl().add_to(mapa)
