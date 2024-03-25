@@ -26,7 +26,7 @@ def filtraQuery(query):
 
 
 #   CONFIG MAPA
-rosaDosVentos = ("https://i.imgur.com/ZNax9Nh.png") 
+rosaDosVentos = ("https://raw.githubusercontent.com/hyperhyena/boias/main/RosaDosVentos.png?token=GHSAT0AAAAAACPIOTZNB2K2UXL6TAJXTGYCZQBOEGQ") 
 formatter = "function(num) {return L.Util.formatNum(num, 6) + ' &deg; ';};" #formatador pros pontos da posição do mouse
 florianopolis_coords = [-27.5973002, -48.5496098] # Coordenadas aproximadas do centro de Florianópolis
 laranja = 'orange'; verde = 'green'; preto = 'black'; vermelho = 'red'; roxo = 'purple'
@@ -35,7 +35,7 @@ circle = 'circle'; flag = 'glyphicon-flag'
 # -------------
 mapa = folium.Map(location=florianopolis_coords, zoom_start=12)
 MiniMap(toggle_display=True).add_to(mapa)
-FloatImage(rosaDosVentos, bottom=70, left=4).add_to(mapa)
+FloatImage(rosaDosVentos, bottom=70, left=4, width = '300px', height = '300px').add_to(mapa)
 mapa.add_child(MeasureControl())
 MousePosition(position="bottomleft", separator=" | ", lat_formatter=formatter, lng_formatter=formatter, prefix="Coordinates:").add_to(mapa) #posicao mouse
 folium.plugins.LocateControl(auto_start=False).add_to(mapa) #local user
