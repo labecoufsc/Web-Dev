@@ -5,6 +5,8 @@ from influxClient import InfluxClient
 #   QUERY
 
 IC = InfluxClient("Bo6LdE_XVqMZrC6hAu_OUZwhRYxwqFiea01RJx9sdPdtcxbfE0mzPi32spI2JFWkQwpQcUl5Y15Rg2NCX1WrwA==","Boias Livres","bucket-boias")
+
+
 query1 = 'from(bucket: "bucket-boias")\
   |> range(start: 1633124983)\
   |> filter(fn: (r) => r["_measurement"] == "boiasLivres")\
@@ -12,14 +14,20 @@ query1 = 'from(bucket: "bucket-boias")\
   |> filter(fn: (r) => r["_field"] == "latitude" or r["_field"] == "longitude")\
   |> group(columns: ["_time", "tag"])\
   |> yield(name: "mean")'
+    
 c = IC.query_data(query1)
-c = [i[0] for i in c]
-final = [*zip(c[::2], c[1::2])]
+#c = [i[0] for i in c]
+#final = [*zip(c[::2], c[1::2])]
+
+def filtraQuery(query):
+    query = [i[0] for i in query]
+    query = [*zip(query[::2], query[1::2])]
+    return query
+
 
 #   CONFIG MAPA
-caminhoArquivoLaranja = 'python\laranja.txt'
-rosaDosVentos = ("https://raw.githubusercontent.com/ocefpaf/secoora_assets_map/a250729bbcf2ddd12f46912d36c33f7539131bec/secoora_icons/rose.png")
-formatter = "function(num) {return L.Util.formatNum(num, 3) + ' &deg; ';};" #formatador pros pontos da posição do mouse
+rosaDosVentos = ("https://i.imgur.com/ZNax9Nh.png") 
+formatter = "function(num) {return L.Util.formatNum(num, 6) + ' &deg; ';};" #formatador pros pontos da posição do mouse
 florianopolis_coords = [-27.5973002, -48.5496098] # Coordenadas aproximadas do centro de Florianópolis
 laranja = 'orange'; verde = 'green'; preto = 'black'; vermelho = 'red'; roxo = 'purple'
 bv = 'Boia Vermelha'; bvd = 'Boia Verde'; bl = 'Boia Laranja'; bp = 'Boia Preta'; br = 'Boia Roxa'
@@ -64,8 +72,8 @@ def plotarBoia(listaCoordenadasBoia, corDaBoia, grupoBoia):
     trilhaDaBoia(listaCoordenadasBoia, corDaBoia, grupoBoia)
 
 #   PLOTANDO
-plotarBoia(final, preto, grupoPreto)
+plotarBoia(filtraQuery(c), preto, grupoPreto)
 
 folium.FitOverlays(fly=True).add_to(mapa) #centrar nos marcadores 
 folium.LayerControl().add_to(mapa)
-mapa.save('mapaQuery.html')
+mapa.save(r'djangoapp\landing\templates\landing\mapaQuery.html')
